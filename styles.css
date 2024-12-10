@@ -1,0 +1,51 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Main Section */
+main {
+    text-align: center;
+}
+
+/* Headline */
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+}
+
+/* Introduction */
+.intro {
+    font-size: 1.2rem;
+    margin-bottom: 1em;
+    color: #666;
+}
+
+/* Links */
+.links a {
+    text-decoration: none;
+    font-size: 1rem;
+    margin: 0 0.5em;
+    color: #007BFF;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.links a:hover {
+    border-bottom: 2px solid #007BFF;
+}
