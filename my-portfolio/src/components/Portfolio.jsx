@@ -10,10 +10,21 @@ const Portfolio = () => {
   ];
 
   const socialLinks = [
-    { Icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { Icon: Github, href: '#', label: 'GitHub' },
-    { Icon: Instagram, href: '#', label: 'Instagram' }
+    { Icon: Linkedin, href: 'https://www.linkedin.com/in/kunal-tpuri/', label: 'LinkedIn' },
+    { Icon: Instagram, href: 'https://www.instagram.com/kunal.o__o/', label: 'Instagram' }
   ];
+
+  {socialLinks.map(({ Icon, href, label }) => ( //open links in new tab
+    <a
+      key={label}
+      href={href}
+      target="_blank" //Opens the link in a new tab
+      rel="noopener noreferrer" //Provides security benefits
+      className="text-gray-400 hober:text-red-500 transition colors"
+      aria-label={label}
+    >
+    </a>
+  ))}
 
   return (
     <div className="min-h-screen bg-gray-950 text-gray-100">
@@ -46,21 +57,22 @@ const Portfolio = () => {
             <div className="relative">
               <div className="w-40 h-40 bg-red-600/20 rounded-full absolute -z-10 blur-xl" />
               <h1 className="text-6xl font-serif mb-8">
-                Your
+                Kunal
                 <br />
-                Name
+                Puri
               </h1>
             </div>
 
             {/* About Section */}
             <div className="mb-12">
               <h2 className="text-red-500 uppercase tracking-wider mb-4">About Me</h2>
-              <h3 className="text-2xl mb-4 text-gray-100">Full-stack developer based in [Your Location].</h3>
+              <h3 className="text-2xl mb-4 text-gray-100">Life Sciences Management Consultant based in San Francisco - Bay Area.</h3>
               <p className="text-gray-400 leading-relaxed">
-                I'm a developer passionate about creating elegant solutions to complex problems. 
-                With a love for both the outdoors and technology, I bring a unique perspective 
-                to my work. When I'm not coding, you'll find me exploring trails and capturing 
-                moments through photography.
+                I'm a recent graduate from UC Berkeley where I studied Molecular & Cell Biology with a focus in Immunology and minored in Data Science.
+                I'm highly interested in life sciences innovation, technology, and research. When I'm not working you can find me 
+                exploring the endless trails of California, swimming, or working on mini projects (like this one!). 
+
+                Interests in finance x life sciences, health and wellness, and exploring new sports (curr: golf). 
               </p>
             </div>
           </div>
