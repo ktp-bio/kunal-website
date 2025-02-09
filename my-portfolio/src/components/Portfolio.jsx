@@ -1,4 +1,5 @@
 import React from 'react';
+import myPhoto from '../assets/myPhoto.jpg'
 import { Github, Linkedin, Instagram } from 'lucide-react';
 
 const Portfolio = () => {
@@ -66,7 +67,7 @@ const Portfolio = () => {
             {/* About Section */}
             <div className="mb-12">
               <h2 className="text-red-500 uppercase tracking-wider mb-4">About Me</h2>
-              <h3 className="text-2xl mb-4 text-gray-100">Life Sciences Management Consultant based in San Francisco - Bay Area.</h3>
+              <h3 className="text-2xl mb-4 text-gray-100">Life Sciences Management Consultant based in the Bay Area</h3>
               <p className="text-gray-400 leading-relaxed">
                 I'm a recent graduate from UC Berkeley where I studied Molecular & Cell Biology with a focus in Immunology and minored in Data Science.
                 I'm highly interested in life sciences innovation, technology, and research. When I'm not working you can find me 
@@ -81,8 +82,7 @@ const Portfolio = () => {
           <div className="relative">
             <div className="w-64 h-64 bg-red-600/20 rounded-full absolute -z-10 blur-xl" />
             <img
-              src="/api/placeholder/400/400"
-              alt="Decorative"
+              src="../assets/myPhoto.jpg"
               className="rounded-full w-64 h-64 object-cover border-2 border-red-500/20"
             />
           </div>
