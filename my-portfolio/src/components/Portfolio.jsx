@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import myPhoto from '../assets/myPhoto.jpg'
-import { Github, Linkedin, Instagram } from 'lucide-react';
+import { Linkedin, Instagram } from 'lucide-react';
 
 const Portfolio = () => {
   const navigation = [
-    { name: 'Home', href: '#' },
-    { name: 'Health+Hiking', href: '#health' },
-    { name: 'Photos', href: '#photos' },
-    { name: 'Blog', href: '#blog' }
+    { name: 'Home', href: '/' },
+    { name: 'Health+Hiking', href: '/health' },
+    { name: 'Photos', href: '/photos' },
+    { name: 'Blog', href: '/blog' }
   ];
 
   const socialLinks = [
@@ -15,44 +16,34 @@ const Portfolio = () => {
     { Icon: Instagram, href: 'https://www.instagram.com/kunal.o__o/', label: 'Instagram' }
   ];
 
-  {socialLinks.map(({ Icon, href, label }) => ( //open links in new tab
-    <a
-      key={label}
-      href={href}
-      target="_blank" //Opens the link in a new tab
-      rel="noopener noreferrer" //Provides security benefits
-      className="text-gray-400 hober:text-red-500 transition colors"
-      aria-label={label}
-    >
-    </a>
-  ))}
-
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-100">
+    <div className="min-h-screen w-full bg-[#0a0a0f] text-gray-100">
       {/* Navigation */}
-      <nav className="p-6 border-b border-gray-800">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white font-bold">
-            KP
-          </div>
-          <div className="flex gap-8">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className={`text-lg hover:text-red-500 transition-colors ${
-                  item.name === 'Home' ? 'text-red-500' : 'text-gray-300'
-                }`}
-              >
-                {item.name}
-              </a>
-            ))}
+      <nav className="w-full border-b border-gray-800">
+        <div className="container mx-auto max-w-7xl px-4 lg:px-8 py-6">
+          <div className="flex justify-between items-center">
+            <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white font-bold">
+              KP
+            </div>
+            <div className="flex gap-8">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`text-lg hover:text-red-500 transition-colors ${
+                    item.name === 'Home' ? 'text-red-500' : 'text-gray-300'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <main className="max-w-7xl mx-auto px-6 py-20">
+      {/* Main content */}
+      <main className="container mx-auto max-w-7xl px-4 lg:px-8 py-20">
         <div className="flex justify-between items-start">
           <div className="max-w-2xl">
             <div className="relative">
@@ -73,17 +64,18 @@ const Portfolio = () => {
                 I'm highly interested in life sciences innovation, technology, and research. When I'm not working you can find me 
                 exploring the endless trails of California, swimming, or working on mini projects (like this one!). 
 
-                Interests in finance x life sciences, health and wellness, and exploring new sports (curr: golf). 
+                Interests in finance x life sciences, health and wellness, and exploring new sports (curr: golf).
               </p>
             </div>
           </div>
 
           {/* Decorative Image */}
-          <div className="relative">
-            <div className="w-64 h-64 bg-red-600/20 rounded-full absolute -z-10 blur-xl" />
+          <div className="relative shrink-0">
+            <div className="w-96 h-96 bg-red-600/20 rounded-full absolute -z-10 blur-xl" />
             <img
-              src="../assets/myPhoto.jpg"
-              className="rounded-full w-64 h-64 object-cover border-2 border-red-500/20"
+              src={myPhoto}
+              alt="Profile"
+              className="rounded-full w-96 h-96 object-cover border-2 border-red-500/20"
             />
           </div>
         </div>
@@ -111,6 +103,8 @@ const Portfolio = () => {
               <a
                 key={label}
                 href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-red-500 transition-colors"
                 aria-label={label}
               >

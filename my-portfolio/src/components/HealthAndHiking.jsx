@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip, ReferenceLine } from 'recharts';
 
@@ -92,7 +93,6 @@ const HealthAndHiking = () => {
     };
   }, [timeRange]);
 
-  // Updated color scheme
   const colors = {
     feather: '#77C9D4',
     marine: '#57BC90',
@@ -101,34 +101,43 @@ const HealthAndHiking = () => {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: `linear-gradient(135deg, ${colors.feather} 0%, ${colors.marine} 100%)` }}>
-      {/* Navigation */}
-      <nav className="p-6" style={{ borderBottom: `1px solid ${colors.forest}30` }}>
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold" 
-               style={{ background: colors.forest }}>
-            KP
-          </div>
-          <div className="flex gap-8">
-            <a href="/" className="text-lg hover:opacity-80 transition-colors" 
-               style={{ color: colors.forest }}>Home</a>
-            <a href="#health" className="text-lg" 
-               style={{ color: colors.forest, fontWeight: 'bold' }}>Health+Hiking</a>
-            <a href="#photos" className="text-lg hover:opacity-80 transition-colors" 
-               style={{ color: colors.forest }}>Photos</a>
-            <a href="#blog" className="text-lg hover:opacity-80 transition-colors" 
-               style={{ color: colors.forest }}>Blog</a>
+    <div className="min-h-screen w-full">
+      {/* Fixed position background that spans full width */}
+      <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-full" style={{ 
+        background: `linear-gradient(135deg, ${colors.feather} 0%, ${colors.marine} 100%)`,
+        zIndex: -1 
+      }} />
+      
+      {/* Navigation - full width with centered content */}
+      <nav className="w-full sticky top-0 z-50 backdrop-blur-sm">
+        <div className="container mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold" 
+                 style={{ background: colors.forest }}>
+              KP
+            </div>
+            <div className="flex gap-8">
+              <Link to="/" className="text-lg hover:opacity-80 transition-colors" 
+                style={{ color: colors.forest }}>Home</Link>
+              <Link to="/health" className="text-lg" 
+                style={{ color: colors.forest, fontWeight: 'bold' }}>Health+Hiking</Link>
+              <Link to="/photos" className="text-lg hover:opacity-80 transition-colors" 
+                style={{ color: colors.forest }}>Photos</Link>
+              <Link to="/blog" className="text-lg hover:opacity-80 transition-colors" 
+                style={{ color: colors.forest }}>Blog</Link>
+            </div>
           </div>
         </div>
       </nav>
 
-      <main className="max-w-7xl mx-auto px-6 py-12">
-        {/* Hikes Grid Section */}
+      {/* Main content - centered with max width */}
+      <main className="container mx-auto max-w-7xl px-4 lg:px-8 py-12">
+        {/* Recent Adventures section */}
         <section className="mb-16">
           <h2 className="text-2xl font-semibold mb-8" style={{ color: colors.forest }}>
             Recent Adventures
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {hikes.map((hike) => (
               <div key={hike.id} className="rounded-lg p-4" 
                    style={{ background: `${colors.white}10`, backdropFilter: 'blur(8px)' }}>
@@ -170,7 +179,7 @@ const HealthAndHiking = () => {
                   <h3 className="text-xl font-semibold" style={{ color: colors.forest }}>
                     {hike.title}
                   </h3>
-                  <p className="mt-2" style={{ color: colors.white }}>
+                  <p className="mt-2" style={{ color: colors.forest }}>
                     {hike.description}
                   </p>
                 </div>
@@ -179,14 +188,14 @@ const HealthAndHiking = () => {
           </div>
         </section>
 
-        {/* Step Tracker Section */}
+        {/* Step Tracker section */}
         <section>
           <div className="flex justify-between items-center mb-8">
             <div>
               <h2 className="text-2xl font-semibold" style={{ color: colors.forest }}>
                 Step Tracker
               </h2>
-              <p className="mt-2" style={{ color: colors.white }}>
+              <p className="mt-2" style={{ color: colors.forest }}>
                 Average: {averageSteps.toLocaleString()} steps
               </p>
             </div>
@@ -213,10 +222,10 @@ const HealthAndHiking = () => {
                 <BarChart data={currentStepData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                   <XAxis 
                     dataKey="name" 
-                    stroke={colors.white}
+                    stroke={colors.forest}
                   />
                   <YAxis 
-                    stroke={colors.white}
+                    stroke={colors.forest}
                     tickFormatter={(value) => `${(value / 1000).toFixed(1)}k`}
                   />
                   <Tooltip
@@ -230,12 +239,12 @@ const HealthAndHiking = () => {
                   />
                   <ReferenceLine 
                     y={averageSteps} 
-                    stroke={colors.white} 
+                    stroke={colors.forest} 
                     strokeDasharray="3 3"
                     label={{ 
                       value: 'Average',
                       position: 'right',
-                      fill: colors.white
+                      fill: colors.forest
                     }}
                   />
                   <Bar 
